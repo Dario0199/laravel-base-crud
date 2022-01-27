@@ -2,6 +2,15 @@
 
 @section('main-content')
    <div>
+
+        @if (session('deleted'))
+            <div class="alert alert-success">
+                <strong>{{ session('deleted') }}</strong>
+                succesfully deleted
+            </div>
+            
+        @endif
+
        <table class="table">
            <thead>
                <tr>
@@ -31,10 +40,14 @@
                             <a class="btn btn-primary" href="{{ route('comics.show', $comic->id) }}">Show</a>
                         </td>
                         <td>
-                            EDIT</td>
+                            <a class="btn btn-success" href="{{ route('comics.edit', $comic->id) }}">Edit</a>
                         </td>
                         <td>
-                            DELETE</td>
+                            <form action="{{ route('comics.destroy', $comic->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Are you sure you want to delete {{ $comic->title }}?')">
+                            </form>
                         </td>
                     </tr>
                 @endforeach
