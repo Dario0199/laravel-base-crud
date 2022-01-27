@@ -9,8 +9,10 @@
                    <th>Title</th>
                    <th>Description</th>
                    <th>Thumb</th>
-                   <th>Series</th>
                    <th>Price</th>
+                   <th>Series</th>
+                   <th>Sale Date</th>
+                   <th>Type</th>
                    <th colspan="3">Action</th>
                </tr>
            </thead>
@@ -21,10 +23,12 @@
                         <td>{{ $comic->title }}</td>
                         <td>{{ $comic->description }}</td>
                         <td>{{ $comic->thumb }}</td>
-                        <td>{{ $comic->series }}</td>
                         <td>{{ $comic->price }}</td>
+                        <td>{{ $comic->series }}</td>
+                        <td>{{ $comic->sale_date }}</td>
+                        <td>{{ $comic->type }}</td>
                         <td>
-                            <a class="btn btn-primary" href="{{ route('comics.show', 'comics.show') }}">Show</a>
+                            <a class="btn btn-primary" href="{{ route('comics.show', $comic->id) }}">Show</a>
                         </td>
                         <td>
                             EDIT</td>
